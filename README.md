@@ -1,5 +1,14 @@
+### Setting up the Environment
+To setup the virtual environment used in this repository run the following code:
+```BASH
+pyenv local 3.11.3
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
 # Smart Start
-In this repository we develop a neural network to detect the wakeup event from accelerometer data. Summarizing slides can be found [here](LINK TO SLIDES).
+In this repository we develop a neural network to detect the wakeup event from accelerometer data. Summarizing slides can be found [here](https://github.com/SonkyD/Smart-Start/blob/main/smart_start.pdf).
 
 ### Problem
 Getting out of bed in the morning can be a struggle—we're faced with the jarring cold light, a chilly bathroom, and the anticipation of waiting for the coffee machine to preheat. How can we improve this morning routine? The idea is to have smart systems recognizing our (soon) wakeup, gradually increasing light, warming up the bathroom, and having the coffee machine ready for a quick brew.
@@ -26,18 +35,12 @@ Because this is the most important event in terms of our business question, we f
 Our final 2 layer classical artificial neural network [ANN model]() predicts sleep and awake states with an accuracy of 97.68%.
 It is better in prediction 'sleep' than 'awake' and is weak only at predicting the current state precisely during sleep onset and wakeup events:
 
+### Conclusion
+We could further imrpove the model by additional feature engineering such as calculated standard deviation, mean and maximum values over a longer period of time. For the usecase we could also include more sensor data like heart beat rate, body temperature and / or skin conductance, that can also easily be measured with common smart watches. In addition, we could refine the model by adding a personal 'wakeup' and /or sleep time window for the specific user. Besides that it would aso be possible to switch the focis a bit from prediciton of sleep vs. awake to prediciting the exact onset and wakeup event themselfs.
 
-### Next Steps
-We could further imrpove the model by additional feature engineering such as calculated standard deviation, mean and maximum values over a longer period of time. For the usecase we could also include more sensor data like heart beat rate, body temperature and / or skin conductance, that can also easily be measured with common smart watches.
+### Summary
+Overall, we developed a machine learning model, more precisely an artificial neural network, that predicts sleep and awake state with an accuracy of 97.68 % only by using acceleration data. Our model outperfomrs a previously published Random Forest model which showed an accuracy of 74%. We achieved this by analyzing only acceleration data. Relying only on few, basic data is beneficial for the end user due to data privacy reasons. In summary, we developed a model that can be integrated into a smart home application triggering e.g preheating your coffee machine and warming up your bath and living room nabling you a great start into the day! 
 
 
-To setup the virtual environment used in this repository run the following code:
-
-```BASH
-pyenv local 3.11.3
-python -m venv .venv
-source .venv/bin/activate
-pip install -U pip
-pip install -r requirements.txt
-```
+### :two_hearts: Acknowledgement :two_hearts:
 
