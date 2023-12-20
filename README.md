@@ -41,6 +41,12 @@ We could further imrpove the model by additional feature engineering such as cal
 ### Summary
 Overall, we developed a machine learning model, more precisely an artificial neural network, that predicts sleep and awake state with an accuracy of 97.68 % only by using acceleration data. Our model outperfomrs a previously published Random Forest model which showed an accuracy of 74%. We achieved this by analyzing only acceleration data. Relying only on few, basic data is beneficial for the end user due to data privacy reasons. In summary, we developed a model that can be integrated into a smart home application triggering e.g preheating your coffee machine and warming up your bath and living room nabling you a great start into the day! 
 
+| Contributors |
+| --- |
+| David Marks |
+| Tabea Nöthe-Menchen |
+| Hannes Peter Wecker |
 
 ### :two_hearts: Acknowledgement :two_hearts:
+We are thankful to the Child Mind Institute for providing the data. We acknowledge Tim Schlange for his contributions during the start phase of this project. In addition, we thank all the neue fische coaches for introducing us to the world of data science and answerign our questions.
 
