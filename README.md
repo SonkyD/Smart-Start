@@ -20,7 +20,7 @@ Our aim is to leverage sensor data and machine learning to develop a model that 
 In our pursuit of relevant data, we found [this Kaggle Challenge](https://www.kaggle.com/c/child-mind-institute-detect-sleep-states), which provided wrist-worn accelerometer data comparable to that from ordinary smartwatches—widely worn during sleep. Prioritizing personal data protection, we opted for a minimal dataset. Given the intended app deployment on smartphones which limited internal storage and processing space, we chose to work with only accelerometer data.
 
 ### Data Analyis
-During [exploratory data analysis (EDA)](https://github.com/SonkyD/Smart-Start/blob/main/EDA/EDA_clean.ipynb), we identified missing information on various events in the original event dataset and subsequently removed these instances. We noted that, the main difference between sleep and wakefulness is represented by more frequent changes in the  'ENMO' and 'z-angle'. ![enmo and anglez over one night](images/enmo_angel_1_night.png)</p> During feature engineering ([executed during preprocessing in this script]()) we focused on accentuating these differences. </p> 
+During [exploratory data analysis (EDA)](https://github.com/SonkyD/Smart-Start/blob/main/EDA/EDA_clean.ipynb), we identified missing information on various events in the original event dataset and subsequently removed these instances. We noted that, the main difference between sleep and wakefulness is represented by more frequent changes in the  'ENMO' and 'z-angle'. ![enmo and anglez over one night](images/enmo_angel_1_night.png)</p> During feature engineering ([executed during preprocessing in this script](https://github.com/SonkyD/Smart-Start/blob/main/data_processing/data_preprocessing_script.py)) we focused on accentuating these differences. </p> 
 
 ### Feature Engineering
 Explanation of (newly engineered) features in the data:
@@ -67,16 +67,16 @@ Explanation of (newly engineered) features in the data:
 
 
 ### Model Development
-Beginning with basic 'ENMO' and 'z-angle' measurements, a first [decision tree model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1.ipynb) demonstrated an initial accuracy of 88%. Incorporating newly engineered features significantly resulted in a [model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1_allData.ipynb) with an improved performance to 97.5%. </p> 
+Beginning with basic 'ENMO' and 'z-angle' measurements, a first [decision tree model](https://github.com/SonkyD/Smart-Start/blob/main/Models/simple_Dec_Tree.ipynb) demonstrated an initial accuracy of 75.9%. Incorporating newly engineered features significantly resulted in a [model](https://github.com/SonkyD/Smart-Start/blob/main/Models/Dec_Tree_incl_engineered_features.ipynb) with an improved performance to 97.5%. We tied different other model types ([Random Forest](https://github.com/SonkyD/Smart-Start/blob/main/Models/RandomForest.ipynb), [XGBoost](https://github.com/SonkyD/Smart-Start/blob/main/Models/XGBoost.ipynb)) without further improving the accuracy.
+
+### Final Model and Error Analysis
+Our final 2 layer classical artificial neural network [ANN model](https://github.com/SonkyD/Smart-Start/blob/main/Models/Artificial_Neural_Network.ipynb) predicts sleep and awake states with an accuracy of 97.68%.
+It is better in prediction 'sleep' than 'awake' and is weak only at predicting the current state precisely during sleep onset and wakeup events:
+</p> 
 ![sleep vs wake detection](images/missclasified_states.png)</p> 
 In [error analysis](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree_allData_ErrorAnalysis.ipynb), we noticed proficient pattern recognition, with a slight bias towards sleep classification. 
 Notably, misclassifications occurred predominantly during moments waking up. 
 ![misclassificated events](/images/missclasified_timepoints.png)
-Because this is the most important event in terms of our business question, we further explored neural networks for classification.
-
-### Final Model and Error Analysis
-Our final 2 layer classical artificial neural network! [ANN model]() predicts sleep and awake states with an accuracy of 97.68%.
-It is better in prediction 'sleep' than 'awake' and is weak only at predicting the current state precisely during sleep onset and wakeup events:
 
 ### Conclusion
 We could further imrpove the model by additional feature engineering such as calculated standard deviation, mean and maximum values over a longer period of time. For the usecase we could also include more sensor data like heart beat rate, body temperature and / or skin conductance, that can also easily be measured with common smart watches. In addition, we could refine the model by adding a personal 'wakeup' and /or sleep time window for the specific user. Besides that it would aso be possible to switch the focis a bit from prediciton of sleep vs. awake to prediciting the exact onset and wakeup event themselfs.
