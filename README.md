@@ -59,11 +59,11 @@ Explanation of (newly engineered) features in the data:
 | night                          | An enumeration of potential onset / wakeup event pairs. At most one pair of events can occur for each night.             |
 | event            |The type of event, whether onset, wakeup, sleep or awake             |
 | minutes_since_onset            | Calculates the minutes since the onset event for the current data point             |
-| year                           | Extracted year of the timestamp from the current data point             |
-| month                          |Extracted month of the timestamp from the current data point             |
-| day                            | Extracted day of the timestamp from the current data point            |
-| hour                           | Extracted hour of the timestamp from the current data point            |
-| minute                         |Extracted minute of the timestamp from the current data point             |
+| year                           | Extracted year of the timestamp for the current data point             |
+| month                          |Extracted month of the timestamp for the current data point             |
+| day                            | Extracted day of the timestamp for the current data point            |
+| hour                           | Extracted hour of the timestamp for the current data point            |
+| minute                         |Extracted minute of the timestamp for the current data point             |
 
 
 ### Model Development
