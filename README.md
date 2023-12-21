@@ -17,11 +17,11 @@ Getting out of bed in the morning can be a struggle—we're faced with the jarri
 Our aim is to leverage sensor data and machine learning to develop a model that recognizes when a person is waking up only by smart watch accelerometer data. This will trigger the appropriate setup of you home through a Smart Start/Smart Home app enabling a perfect start of the day!
 
 ### The Data
-In our pursuit of relevant data, we found [this Kaggle Challenge]((https://www.kaggle.com/competitions/child-mind-institute-detect-sleep-states/data)), which provided wrist-worn accelerometer data comparable to that from ordinary smartwatches—widely worn during sleep. Prioritizing personal data protection, we opted for a minimal dataset. Given the intended app deployment on smartphones which limited internal storage and processing space, we chose to work with only accelerometer data.
+In our pursuit of relevant data, we found [this Kaggle Challenge](https://www.kaggle.com/c/child-mind-institute-detect-sleep-states), which provided wrist-worn accelerometer data comparable to that from ordinary smartwatches—widely worn during sleep. Prioritizing personal data protection, we opted for a minimal dataset. Given the intended app deployment on smartphones which limited internal storage and processing space, we chose to work with only accelerometer data.
 
 ### Data Analyis
-During [exploratory data analysis (EDA)](https://github.com/SonkyD/Smart-Start/blob/main/EDA/EDA_clean.ipynb), we identified missing information on various events in the original event dataset and subsequently removed these instances. We noted that, the main difference between sleep and wakefulness is represented by more frequent changes in the  'ENMO' and 'z-angle'. </p> During feature engineering ([executed during preprocessing in this script]()) we focused on accentuating these differences. </p> 
-![enmo and anglez over one night](/images/5AB450B3-D46A-4C57-AA7B-FF093AD3B268.jpeg)
+During [exploratory data analysis (EDA)](https://github.com/SonkyD/Smart-Start/blob/main/EDA/EDA_clean.ipynb), we identified missing information on various events in the original event dataset and subsequently removed these instances. We noted that, the main difference between sleep and wakefulness is represented by more frequent changes in the  'ENMO' and 'z-angle'. ![enmo and anglez over one night](images/enmo_angel_1_night.png)</p> During feature engineering ([executed during preprocessing in this script]()) we focused on accentuating these differences. </p> 
+
 
 ### Model Development
 Beginning with basic 'ENMO' and 'z-angle' measurements, a first [decision tree model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1.ipynb) demonstrated an initial accuracy of 88%. Incorporating newly engineered features significantly resulted in a [model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1_allData.ipynb) with an improved performance to 97.5%. 
@@ -32,7 +32,7 @@ Notably, misclassifications occurred predominantly during moments waking up.
 Because this is the most important event in terms of our business question, we further explored neural networks for classification.
 
 ### Final Model and Error Analysis
-Our final 2 layer classical artificial neural network [ANN model]() predicts sleep and awake states with an accuracy of 97.68%.
+Our final 2 layer classical artificial neural network! [ANN model]() predicts sleep and awake states with an accuracy of 97.68%.
 It is better in prediction 'sleep' than 'awake' and is weak only at predicting the current state precisely during sleep onset and wakeup events:
 
 ### Conclusion
