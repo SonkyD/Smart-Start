@@ -1,4 +1,4 @@
-![sleepyjoe](images/Logo_Smart_Start)
+![sleepyjoe](images/Logo_Smart_Start.png)
 # Smart Start
 In this repository we develop a neural network to detect the wakeup event from accelerometer data. Summarizing slides can be found [here](https://github.com/SonkyD/Smart-Start/blob/main/smart_start.pdf).
 
