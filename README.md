@@ -1,12 +1,4 @@
-### Setting up the Environment
-To setup the virtual environment used in this repository run the following code:
-```BASH
-pyenv local 3.11.3
-python -m venv .venv
-source .venv/bin/activate
-pip install -U pip
-pip install -r requirements.txt
-```
+![sleepyjoe](images/Logo_Smart_Start)
 # Smart Start
 In this repository we develop a neural network to detect the wakeup event from accelerometer data. Summarizing slides can be found [here](https://github.com/SonkyD/Smart-Start/blob/main/smart_start.pdf).
 
@@ -90,8 +82,18 @@ Overall, we developed a machine learning model, more precisely an artificial neu
 | Hannes Peter Wecker |
 
 ### :two_hearts: Acknowledgement :two_hearts:
-We are thankful to the Child Mind Institute for providing the data. We acknowledge Tim Schlange for his contributions during the start phase of this project. In addition, we thank all the neue fische coaches for introducing us to the world of data science and answering our questions.
+We are thankful to the Child Mind Institute for providing the data. We acknowledge Tim Schlange for his contributions during the start phase of this project. In addition, we thank all the neue fische coaches for introducing us to the world of data science and answering our questions. The 'Smart Start logo' was generated using OpenAI's DALL-E.
 
 ### License
 Data was provided under the [CC BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+### Setting up the Environment
+To setup the virtual environment used in this repository run the following code:
+```BASH
+pyenv local 3.11.3
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
 
