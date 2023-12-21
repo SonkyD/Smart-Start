@@ -90,5 +90,5 @@ Overall, we developed a machine learning model, more precisely an artificial neu
 | Hannes Peter Wecker |
 
 ### :two_hearts: Acknowledgement :two_hearts:
-We are thankful to the Child Mind Institute for providing the data. We acknowledge Tim Schlange for his contributions during the start phase of this project. In addition, we thank all the neue fische coaches for introducing us to the world of data science and answerign our questions.
+We are thankful to the Child Mind Institute for providing the data. We acknowledge Tim Schlange for his contributions during the start phase of this project. In addition, we thank all the neue fische coaches for introducing us to the world of data science and answering our questions.
 
