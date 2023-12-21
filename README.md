@@ -22,13 +22,56 @@ In our pursuit of relevant data, we found [this Kaggle Challenge](https://www.ka
 ### Data Analyis
 During [exploratory data analysis (EDA)](https://github.com/SonkyD/Smart-Start/blob/main/EDA/EDA_clean.ipynb), we identified missing information on various events in the original event dataset and subsequently removed these instances. We noted that, the main difference between sleep and wakefulness is represented by more frequent changes in the  'ENMO' and 'z-angle'. ![enmo and anglez over one night](images/enmo_angel_1_night.png)</p> During feature engineering ([executed during preprocessing in this script]()) we focused on accentuating these differences. </p> 
 
+### Feature Engineering
+Explanation of (newly engineered) features in the data:
+
+| Features                       | Explanation |
+|--------------------------------|-------------|
+| anglez                         | As calculated and described by the [GGIR package](https://cran.r-project.org/web/packages/GGIR/vignettes/GGIR.html#4_Inspecting_the_results), z-angle is a metric derived from individual accelerometer components that is commonly used in sleep detection, and refers to the angle of the arm relative to the vertical axis of the body. The data was then binned from 5s per data point to 1 min per data point for feature engineering.            |
+| enmo                           |As calculated and described by the [GGIR package](https://cran.r-project.org/web/packages/GGIR/vignettes/GGIR.html#4_Inspecting_the_results), ENMO is the Euclidean Norm Minus One of all accelerometer signals, with negative values rounded to zero. While no standard measure of acceleration exists in this space, this is one of the several commonly computed features.The data was then binned from 5s per data point to 1 min per data point for feature engineering.                 |
+| step                           |   An integer timestep for each observation within a series.          |
+| timestamp                      |A corresponding datetime with ISO 8601 format %Y-%m-%dT%H:%M:%S%z.             |
+| series_id                      |Unique identifier for each accelerometer series.             |
+| anglez_std                     |Standard deviation of 1 min of Angle-z             |
+| enmo_std                       |Standard deviation of 1 min of ENMO             |
+| slope_enmo                     | Calculation of the slope of ENMO for the duration of 1 minute             |
+| slope_anglez                   |Calculation of the slope of Angle-z for the duration of 1 minute             |
+| anglez_outside_45_counter      | Counted the number of times Angle-Z was over +45° or under -45° in 1 minute             |
+| enmo_over_008_counter          | Counted the number of times ENMO was 0.008 in 1 minute.             |
+| anglez_difference_5_per_min    |Counter how often the Angle-z differed over 5° in 5 minutes             |
+| anglez_5min_mean               |Rolling calculation for the mean value of Angle-z in a 5 minute window.             |
+| anglez_5min_std                | Rolling calculation for the standard deviation of Angle-z in a 5 minute window.            |
+| anglez_5min_mean_shifted       |Rolling calculation for the mean of Angle-z in a 5 minute window and forward shifted for a time window of 5 minutes             |
+| anglez_5min_std_shifted        |Rolling calculation for the standard deviation of Angle-z in a 5 minute window and forward shifted for a time window of 5 minutes              |
+| enmo_5min_mean                 |Rolling calculation for the mean of ENMO in a 5 minute window              |
+| enmo_5min_std                  |Rolling calculation for the standard deviation of ENMO in a 5 minute window             |
+| enmo_5min_mean_shifted         |Rolling calculation for the mean of ENMO in a 5 minute window and forward shifted for a time window of 5 minutes      |
+| enmo_5min_std_shifted          |Rolling calculation for the standard deviation of ENMO in a 5 minute window and forward shifted for a time window of 5 minutes             |
+| anglez_10min_mean              |Rolling calculation for the mean of Angle-z in a 10 minute window              |
+| anglez_10min_std               |Rolling calculation for the standard deviation of Angle-z in a 10 minute window             |
+| anglez_10min_mean_shifted      |Rolling calculation for the mean of Angle-z in a 10 minute window and forward shifted for a time window of 10 minutes             |
+| anglez_10min_std_shifted       |Rolling calculation for the standard deviation of Angle-z in a 10 minute window and forward shifted for a time window of 10 minutes             |
+| enmo_10min_mean                |Rolling calculation for the mean of ENMO in a 10 minute window             |
+| enmo_10min_std                 |Rolling calculation for the standard deviation of ENMO in a 10 minute window             |
+| enmo_10min_mean_shifted        |Rolling calculation for the mean of ENMO in a 10 minute window and forward shifted for a time window of 10 minutes             |
+| enmo_10min_std_shifted         |Rolling calculation for the standard deviation of ENMO in a 10 minute window and forward shifted for a time window of 10 minutes             |
+| anglez_enmo_ratio              | Calculate the ratio of Angle-z and ENMO for a 1 minute duration             |
+| night                          | An enumeration of potential onset / wakeup event pairs. At most one pair of events can occur for each night.             |
+| event            |The type of event, whether onset, wakeup, sleep or awake             |
+| minutes_since_onset            | Calculates the minutes since the onset event for the current data point             |
+| year                           | Extracted year of the timestamp from the current data point             |
+| month                          |Extracted month of the timestamp from the current data point             |
+| day                            | Extracted day of the timestamp from the current data point            |
+| hour                           | Extracted hour of the timestamp from the current data point            |
+| minute                         |Extracted minute of the timestamp from the current data point             |
+
 
 ### Model Development
-Beginning with basic 'ENMO' and 'z-angle' measurements, a first [decision tree model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1.ipynb) demonstrated an initial accuracy of 88%. Incorporating newly engineered features significantly resulted in a [model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1_allData.ipynb) with an improved performance to 97.5%. 
-![sleep vs wake detection](images/A2FDAA4A-8E44-438E-A817-21802AB7A99B_4_5005_c.jpeg)
+Beginning with basic 'ENMO' and 'z-angle' measurements, a first [decision tree model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1.ipynb) demonstrated an initial accuracy of 88%. Incorporating newly engineered features significantly resulted in a [model](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree1_allData.ipynb) with an improved performance to 97.5%. </p> 
+![sleep vs wake detection](images/missclasified_states.png)</p> 
 In [error analysis](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree_allData_ErrorAnalysis.ipynb), we noticed proficient pattern recognition, with a slight bias towards sleep classification. 
 Notably, misclassifications occurred predominantly during moments waking up. 
-![misclassificated events](/images/2AE27D67-82BD-4011-BFE7-0162A7DD702D_4_5005_c.jpeg)
+![misclassificated events](/images/missclasified_timepoints.png)
 Because this is the most important event in terms of our business question, we further explored neural networks for classification.
 
 ### Final Model and Error Analysis
