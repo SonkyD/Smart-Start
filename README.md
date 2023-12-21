@@ -74,7 +74,7 @@ Our final 2 layer classical artificial neural network [ANN model](https://github
 It is better in prediction 'sleep' than 'awake' and is weak only at predicting the current state precisely during sleep onset and wakeup events:
 </p> 
 ![sleep vs wake detection](images/missclasified_states.png)</p> 
-In [error analysis](https://github.com/HPweck/sleepy_kid_Zzzz/blob/models/model_DecisionTree_allData_ErrorAnalysis.ipynb), we noticed proficient pattern recognition, with a slight bias towards sleep classification. 
+In [error analysis](XXX), we noticed proficient pattern recognition, with a slight bias towards sleep classification. 
 Notably, misclassifications occurred predominantly during moments waking up. 
 ![misclassificated events](/images/missclasified_timepoints.png)
 
