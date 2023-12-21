@@ -1,4 +1,5 @@
-![sleepyjoe](images/Logo_Smart_Start.png)
+<img src="https://github.com/SonkyD/Smart-Start/blob/main/images/Logo_Smart_Start.png" width="350" height="350" align = "right">
+
 # Smart Start
 In this repository we develop a neural network to detect the wakeup event from accelerometer data. Summarizing slides can be found [here](https://github.com/SonkyD/Smart-Start/blob/main/smart_start.pdf).
 
