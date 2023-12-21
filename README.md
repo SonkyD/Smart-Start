@@ -72,8 +72,7 @@ Beginning with basic 'ENMO' and 'z-angle' measurements, a first [decision tree m
 ### Final Model and Error Analysis
 Our final 2 layer classical artificial neural network [ANN model](https://github.com/SonkyD/Smart-Start/blob/main/Models/Artificial_Neural_Network.ipynb) predicts sleep and awake states with an accuracy of 97.68%.
 It is better in prediction 'sleep' than 'awake' and is weak only at predicting the current state precisely during sleep onset and wakeup events:
-</p> 
-![sleep vs wake detection](images/missclasified_states.png)</p> 
+![sleep vs wake detection](images/missclasified_states.png)
 In [error analysis](https://github.com/SonkyD/Smart-Start/blob/main/error_analysis/Error_Analysis_ANN.ipynb), we noticed proficient pattern recognition, with a slight bias towards sleep classification. 
 Notably, misclassifications occurred predominantly during moments waking up. 
 ![misclassificated events](/images/missclasified_timepoints.png)
